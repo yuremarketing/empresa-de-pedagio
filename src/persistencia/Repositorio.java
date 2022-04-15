@@ -8,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.List;
 
 import modelo.Concessionaria;
+import modelo.Tarifa;
 
 public class Repositorio {
 
@@ -20,7 +21,12 @@ public class Repositorio {
         objSaida.writeObject(consconcecionaria);
         
     } 
-   /* carrega as informações da lista */
+    // sobra carga de método, mudeia a assinatura
+    public boolean gravar(Tarifa tarifa) {
+        return true;
+    }
+
+    /* carrega as informações da lista */
     public List ler() throws IOException, ClassNotFoundException {
 
         FileInputStream entradaArquivo = new FileInputStream("pedagio.dat");

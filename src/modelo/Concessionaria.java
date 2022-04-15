@@ -1,15 +1,21 @@
 package modelo;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Concessionaria {
     private String nome;
-    private  Set<Praca> pracas;
+    private  Set<Praca> pracas= new HashSet<>();
     private Double totalRecebido;
     
-    private Concessionaria(String nome){
+    private Concessionaria(){
+
+    };
+    
+    public Concessionaria(String nome){
         this.nome = nome;
         this.totalRecebido = 0.0;
+    
     }
 
     public String getNome() {
@@ -35,4 +41,13 @@ public class Concessionaria {
     public void setTotalRecebido(Double totalRecebido) {
         this.totalRecebido = totalRecebido;
     }
+
+    public void adicionaPraca(Praca praca) {
+        this.pracas.add(praca);
+        this.totalRecebido = 0.0;
+        for (Praca p : this.pracas) {
+            this.totalRecebido = this.totalRecebido + p.getTotalRecebido(); 
+        }
+    }
+
 }
